@@ -3,8 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use YGB\Avisos\WooIntegration;
-
 class YGB_Avisos_Woo {
 
 	const CACHE_DURATION = HOUR_IN_SECONDS;
@@ -338,4 +336,4 @@ class YGB_Avisos_Woo {
 	}
 }
 
-add_action( 'plugins_loaded', array( 'YGB\Avisos\WooIntegration\YGB_Avisos_Woo', 'check_woocommerce_compatibility' ) );
+add_action( 'plugins_loaded', array( 'YGB_Avisos_Woo', 'check_woocommerce_compatibility' ) );

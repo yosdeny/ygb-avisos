@@ -35,15 +35,17 @@ YGB Avisos muestra cintas informativas (tickers) en frontend con control de colo
 
 La versión 2.0.1 aplica medidas defensivas:
 
-* Sanitización estricta de entradas.
-* Escapado contextual de salidas.
+* Sanitización estricta de entradas (`sanitize_text_field`, `absint`, `intval`).
+* Escapado contextual de salidas (`esc_html`, `esc_attr`, `esc_url`).
 * Whitelist para colores, animaciones, posiciones y tipos de contenido.
 * Validación de estado de publicación antes de renderizar avisos.
 * Nonce y capability checks en metaboxes.
 * Filtrado seguro de estilos inline (`color`, `background-color`, `font-weight`, `text-decoration`, `font-style`).
 * Validación temprana de versiones de PHP, WordPress y WooCommerce.
-* Caché invalidada por versión cuando cambian productos o avisos.
+* Caché con Transients API invalidada por eventos (actualización/eliminación de productos).
 * Uso de `is_readable()` para inclusión de archivos.
+* Rate limiting en shortcode `[ygb-avisos-lista]` (máximo 20 avisos).
+* Validación de imágenes de fondo (MIME types, tamaño máximo 2MB filtrable).
 
 == Installation ==
 
@@ -79,11 +81,15 @@ Sí, el editor clásico permite aplicar color al texto. Solo se permiten propied
 
 = 2.0.1 =
 
-* Corregido error fatal por namespaces inconsistentes.
+* Corregido error fatal por namespaces inconsistentes en class-woo-integration.php.
 * Restaurado soporte de color en editor clásico mediante `safecss_filter_attr`.
 * Añadida validación temprana de versiones de PHP, WordPress y WooCommerce.
 * Reemplazado `wp_cache_*` por Transients API para caché persistente.
 * Mejoras de seguridad en carga de dependencias con `is_readable()`.
+* Corregido test unitario de sanitización usando Reflection para método privado.
+* Añadido rate limiting al shortcode `[ygb-avisos-lista]` (máximo 20 avisos).
+* Refactorizada constante MAX_IMAGE_SIZE a método filtrable `get_max_image_size()`.
+* Documentación de seguridad actualizada con detalles específicos.
 
 = 2.0.0 =
 

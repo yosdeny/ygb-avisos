@@ -41,9 +41,12 @@ class YGB_Avisos_Shortcode {
 	public static function render_lista( $atts ) {
 		$atts = shortcode_atts( array( 'cantidad' => 5 ), $atts );
 
+		// Rate limiting: máximo absoluto de 20 avisos para evitar DoS
+		$cantidad = min( absint( $atts['cantidad'] ), 20 );
+
 		$avisos = get_posts( array(
 			'post_type'      => 'ygb_aviso',
-			'posts_per_page' => intval( $atts['cantidad'] ),
+			'posts_per_page' => $cantidad,
 			'post_status'    => 'publish'
 		) );
 
