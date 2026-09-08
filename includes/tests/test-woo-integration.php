@@ -5,8 +5,6 @@
  * @package YGB_Avisos
  */
 
-use YGB\Avisos\WooIntegration\YGB_Avisos_Woo;
-
 class YGB_Avisos_Woo_Test extends WP_UnitTestCase {
 
 	/**
@@ -43,7 +41,12 @@ class YGB_Avisos_Woo_Test extends WP_UnitTestCase {
 	public function test_sanitize_ticker_content_removes_style_and_id() {
 		$content = '<span style="color:red" id="malicioso">Hola</span><a href="https://example.com" onclick="alert(1)">Enlace</a>';
 
-		$sanitized = YGB_Avisos_Shortcode::sanitize_ticker_content( $content );
+		// Usar reflection para acceder al método privado sanitize_ticker_content
+		$reflection = new ReflectionClass( 'YGB_Avisos_Shortcode' );
+		$method = $reflection->getMethod( 'sanitize_ticker_content' );
+		$method->setAccessible( true );
+
+		$sanitized = $method->invokeArgs( null, array( $content ) );
 
 		$this->assertStringNotContainsString( 'style=', $sanitized );
 		$this->assertStringNotContainsString( 'id=', $sanitized );

@@ -20,7 +20,16 @@ class YGB_Avisos_Metaboxes {
 
 	const FONT_SIZE_RANGE = [ 'min' => 10, 'max' => 50 ];
 	const SPEED_RANGE     = [ 'min' => 10, 'max' => 100 ];
-	const MAX_IMAGE_SIZE  = 2097152;
+
+	/**
+	 * Obtiene el tamaño máximo de imagen permitido.
+	 * Permite filtrar el valor por defecto de 2MB.
+	 *
+	 * @return int Tamaño máximo en bytes.
+	 */
+	public static function get_max_image_size() {
+		return apply_filters( 'ygb_avisos_max_image_size', 2097152 );
+	}
 
 	private static $simbolos = [
 		'1'  => '🔸🔸🔸',
@@ -215,7 +224,7 @@ class YGB_Avisos_Metaboxes {
 		}
 
 		$file_size = self::get_attached_file_size( $imagen_id );
-		$max_size  = apply_filters( 'ygb_avisos_max_image_size', self::MAX_IMAGE_SIZE );
+		$max_size  = self::get_max_image_size();
 
 		if ( $file_size > $max_size ) {
 			$size_mb = round( $file_size / 1024 / 1024, 2 );
@@ -347,7 +356,7 @@ class YGB_Avisos_Metaboxes {
 		}
 
 		$file_size = self::get_attached_file_size( $imagen_id );
-		$max_size  = apply_filters( 'ygb_avisos_max_image_size', self::MAX_IMAGE_SIZE );
+		$max_size  = self::get_max_image_size();
 
 		if ( $file_size > $max_size ) {
 			return false;
