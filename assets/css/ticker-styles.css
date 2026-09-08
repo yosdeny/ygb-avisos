@@ -1,0 +1,313 @@
+/* Estilos base - FRANJA ULTRA FINA */
+.ygb-ticker {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0.3em 0 !important;
+    box-sizing: border-box;
+}
+
+.ygb-ticker-header {
+    padding: 0.2em 15px;
+    margin-right: 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 0.9em;
+}
+
+.ygb-ticker-content {
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Track con flexbox para el efecto continuo */
+.ygb-ticker-track {
+    display: flex;
+    white-space: nowrap;
+    animation: ygb-scroll linear infinite;
+    width: fit-content;
+    align-items: center;
+}
+
+/* Contenido de cada ciclo */
+.ygb-ticker-track-content {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 0.9em;
+}
+
+/* Separador visible entre ciclos */
+.ygb-ticker-separator-cycle {
+    display: inline-block;
+    margin: 0 30px;
+    font-size: 1.2em;
+    opacity: 0.9;
+    color: inherit;
+    white-space: nowrap;
+}
+
+/* Animaciones para el separador */
+.ygb-ticker-separator-cycle.anim-pulse {
+    animation: cycle-pulse 2s ease-in-out infinite;
+}
+
+.ygb-ticker-separator-cycle.anim-spin {
+    animation: cycle-spin 3s linear infinite;
+    display: inline-block;
+}
+
+.ygb-ticker-separator-cycle.anim-bounce {
+    animation: cycle-bounce 2s ease infinite;
+    display: inline-block;
+}
+
+.ygb-ticker-separator-cycle.anim-flash {
+    animation: cycle-flash 2s ease infinite;
+}
+
+.ygb-ticker-separator-cycle.anim-shake {
+    animation: cycle-shake 0.5s ease infinite;
+    display: inline-block;
+}
+
+@keyframes cycle-pulse {
+    0% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.15); }
+    100% { opacity: 0.7; transform: scale(1); }
+}
+
+@keyframes cycle-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes cycle-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes cycle-flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+@keyframes cycle-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Animación de scroll - mueve exactamente la mitad (un ciclo completo) */
+@keyframes ygb-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Pausa en hover */
+.ygb-ticker:hover .ygb-ticker-track {
+    animation-play-state: paused;
+}
+
+/* Items dentro del contenido */
+.ygb-ticker-item {
+    margin: 0 10px;
+    display: inline-block;
+    font-size: 0.9em;
+}
+
+.ygb-ticker-item a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.ygb-ticker-item a:hover {
+    text-decoration: underline;
+}
+
+/* Separador entre items (punto) */
+.ygb-ticker-separator {
+    margin: 0 3px;
+    opacity: 0.5;
+    font-size: 0.9em;
+}
+
+/* ======================================== */
+/* BOTÓN CERRAR - ESTILOS CORREGIDOS        */
+/* ======================================== */
+
+/* Estilos base del botón cerrar - FORZADOS para evitar herencia de temas */
+.ygb-ticker-close-btn,
+.ygb-ticker-close {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    text-decoration: none !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+    padding: 0 10px !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+    transition: opacity 0.2s ease !important;
+    opacity: 0.7 !important;
+    width: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
+    border-radius: 0 !important;
+    font-weight: normal !important;
+    font-family: inherit !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Hover - solo cambiar opacidad, nada más */
+.ygb-ticker-close-btn:hover,
+.ygb-ticker-close:hover,
+.ygb-ticker-close-btn:focus,
+.ygb-ticker-close:focus {
+    opacity: 1 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    transform: none !important;
+}
+
+/* Active - mantener estilo */
+.ygb-ticker-close-btn:active,
+.ygb-ticker-close:active {
+    opacity: 0.8 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Prevenir estilos específicos de WooCommerce */
+button.ygb-ticker-close-btn,
+button.ygb-ticker-close,
+button.ygb-ticker-close-btn:hover,
+button.ygb-ticker-close:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+/* ======================================== */
+/* IMAGEN DE FONDO - NUEVA FUNCIONALIDAD    */
+/* ======================================== */
+
+/* Contenedor principal con imagen de fondo */
+.ygb-ticker.has-bg-image {
+    position: relative;
+    background-size: var(--ygb-bg-size, cover) !important;
+    background-position: var(--ygb-bg-position, center) !important;
+    background-repeat: var(--ygb-bg-repeat, no-repeat) !important;
+}
+
+/* Parallax effect */
+.ygb-ticker.has-parallax {
+    background-attachment: fixed !important;
+}
+
+/* Overlay para mejorar legibilidad del texto */
+.ygb-ticker-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+
+.ygb-ticker-bg-overlay.dark {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ygb-ticker-bg-overlay.light {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Asegurar que el contenido esté sobre el overlay */
+.ygb-ticker.has-bg-image > .ygb-ticker-header,
+.ygb-ticker.has-bg-image > .ygb-ticker-content,
+.ygb-ticker.has-bg-image > .ygb-ticker-close-btn,
+.ygb-ticker.has-bg-image > .ygb-ticker-close {
+    position: relative;
+    z-index: 2;
+}
+
+/* ======================================== */
+/* MEJORAS DE LEGIBILIDAD PARA IMAGEN FONDO */
+/* ======================================== */
+
+/* Text shadow para mejor contraste sobre imágenes */
+.ygb-ticker.has-bg-image .ygb-ticker-track-content,
+.ygb-ticker.has-bg-image .ygb-ticker-header,
+.ygb-ticker.has-bg-image .ygb-ticker-item a {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Sin text-shadow excesivo en overlay claro */
+.ygb-ticker.has-bg-image .ygb-ticker-bg-overlay.light ~ .ygb-ticker-track-content,
+.ygb-ticker.has-bg-image .ygb-ticker-bg-overlay.light ~ .ygb-ticker-header,
+.ygb-ticker.has-bg-image .ygb-ticker-bg-overlay.light ~ .ygb-ticker-item a {
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* ======================================== */
+/* RESPONSIVE Y OPTIMIZACIONES              */
+/* ======================================== */
+
+/* Optimización para móviles - deshabilitar parallax en móvil */
+@media (max-width: 768px) {
+    .ygb-ticker.has-parallax {
+        background-attachment: scroll !important;
+    }
+    
+    .ygb-ticker-track-content {
+        font-size: 13px;
+    }
+    
+    .ygb-ticker-separator-cycle {
+        margin: 0 15px;
+        font-size: 1em;
+    }
+    
+    .ygb-ticker-close-btn,
+    .ygb-ticker-close {
+        font-size: 18px !important;
+        padding: 0 8px !important;
+    }
+}
+
+/* Ajuste para admin bar */
+.admin-bar [id^="ygb-universal-"][style*="position: fixed"][style*="top: 0"] {
+    top: 32px !important;
+}
+
+@media (max-width: 768px) {
+    .admin-bar [id^="ygb-universal-"][style*="position: fixed"][style*="top: 0"] {
+        top: 46px !important;
+    }
+}
+
+/* Optimización para movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .ygb-ticker-track,
+    .ygb-ticker-separator-cycle.anim-pulse,
+    .ygb-ticker-separator-cycle.anim-spin,
+    .ygb-ticker-separator-cycle.anim-bounce,
+    .ygb-ticker-separator-cycle.anim-flash,
+    .ygb-ticker-separator-cycle.anim-shake,
+    .ygb-ticker.has-parallax {
+        animation: none !important;
+        background-attachment: scroll !important;
+    }
+}
