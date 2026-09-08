@@ -55,16 +55,14 @@ function ygb_avisos_uninstall_site(): void {
     }
 
     if ($wpdb instanceof wpdb) {
-        $transient_prefixes = [
-            $wpdb->esc_like('_transient_ygb_avisos_') . '%',
-            $wpdb->esc_like('_transient_timeout_ygb_avisos_') . '%',
-        ];
+        $transient_prefix_1 = '_transient_ygb_avisos_';
+        $transient_prefix_2 = '_transient_timeout_ygb_avisos_';
 
         $wpdb->query(
             $wpdb->prepare(
                 "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
-                $transient_prefixes[0],
-                $transient_prefixes[1]
+                $transient_prefix_1 . '%',
+                $transient_prefix_2 . '%'
             )
         );
     }
