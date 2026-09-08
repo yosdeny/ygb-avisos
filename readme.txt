@@ -5,7 +5,7 @@ Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 8.0
 Tested PHP: 8.2
-Stable tag: 2.0.1
+Stable tag: 2.1.0
 Author: YGB
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -34,7 +34,7 @@ YGB Avisos muestra cintas informativas (tickers) en frontend con control de colo
 
 == Security ==
 
-La versión 2.0.1 aplica medidas defensivas:
+La versión 2.1.0 aplica medidas defensivas:
 
 * Sanitización estricta de entradas (`sanitize_text_field`, `absint`, `intval`).
 * Escapado contextual de salidas (`esc_html`, `esc_attr`, `esc_url`).
@@ -79,6 +79,21 @@ PHP 8.1 o superior.
 Sí, el editor clásico permite aplicar color al texto. Solo se permiten propiedades CSS seguras para evitar inyección.
 
 == Changelog ==
+
+= 2.1.0 =
+
+* Actualizada versión del plugin a 2.1.0 con todas las correcciones de seguridad aplicadas.
+* Corregido error fatal por namespaces inconsistentes en class-woo-integration.php.
+* Restaurado soporte de color en editor clásico mediante `safecss_filter_attr`.
+* Añadida validación temprana de versiones de PHP, WordPress y WooCommerce.
+* Reemplazado `wp_cache_*` por Transients API para caché persistente.
+* Mejoras de seguridad en carga de dependencias con `is_readable()`.
+* Corregido test unitario de sanitización usando Reflection para método privado.
+* Añadido rate limiting al shortcode `[ygb-avisos-lista]` (máximo 20 avisos).
+* Refactorizada constante MAX_IMAGE_SIZE a método filtrable `get_max_image_size()`.
+* Documentación de seguridad actualizada con detalles específicos.
+* Actualizados metadatos: Requires WP 7.0+, Tested up to 7.1, Requires PHP 8.0+, Tested PHP 8.2.
+* License URI añadida según estándar GPLv2.
 
 = 2.0.1 =
 

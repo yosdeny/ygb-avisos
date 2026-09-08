@@ -3,7 +3,7 @@
  * Plugin Name: YGB Avisos
  * Plugin URI: https://github.com/yosdeny
  * Description: Plugin de cinta informativa con control total - texto, enlaces, colores, productos y descuentos. Compatible con WooCommerce 8.0+ y HPOS.
- * Version: 2.0.1
+ * Version: 2.1.0
  * Author: YGB
  * Author URI: https://github.com/yosdeny
  * License: GPLv2 or later
