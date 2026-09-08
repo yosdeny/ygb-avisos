@@ -1,17 +1,19 @@
 <?php
 /**
  * Plugin Name: YGB Avisos
- * Plugin URI: https://ygb.com/plugins/ygb-avisos
+ * Plugin URI: https://github.com/yosdeny
  * Description: Plugin de cinta informativa con control total - texto, enlaces, colores, productos y descuentos. Compatible con WooCommerce 8.0+ y HPOS.
  * Version: 2.0.1
  * Author: YGB
- * Author URI: https://ygb.com
- * License: GPL v2 or later
+ * Author URI: https://github.com/yosdeny
+ * License: GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: ygb-avisos
  * Domain Path: /languages
- * Requires at least: 6.3
- * Requires PHP: 8.1
+ * Requires at least: 7.0
  * Tested up to: 7.1
+ * Requires PHP: 8.0
+ * Tested PHP: 8.2
  * WC requires at least: 4.0
  * WC tested up to: 8.5
  *
@@ -23,14 +25,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Validación temprana de versión de PHP.
-if ( version_compare( PHP_VERSION, '8.1', '<' ) ) {
+if ( version_compare( PHP_VERSION, '8.0', '<' ) ) {
 	add_action( 'admin_notices', 'ygb_avisos_php_version_notice' );
 	return;
 }
 
 // Validación de versión de WordPress.
 global $wp_version;
-if ( version_compare( $wp_version, '6.3', '<' ) ) {
+if ( version_compare( $wp_version, '7.0', '<' ) ) {
 	add_action( 'admin_notices', 'ygb_avisos_wp_version_notice' );
 	return;
 }

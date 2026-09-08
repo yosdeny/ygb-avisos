@@ -1,9 +1,10 @@
 === YGB Avisos ===
 Contributors: ygb
 Tags: ticker, notices, announcements, woocommerce, products
-Requires at least: 6.3
+Requires at least: 7.0
 Tested up to: 7.1
-Requires PHP: 8.1
+Requires PHP: 8.0
+Tested PHP: 8.2
 Stable tag: 2.0.1
 Author: YGB
 License: GPLv2 or later
