@@ -55,14 +55,12 @@ function ygb_avisos_uninstall_site(): void {
     }
 
     if ($wpdb instanceof wpdb) {
-        $transient_prefix_1 = '_transient_ygb_avisos_';
-        $transient_prefix_2 = '_transient_timeout_ygb_avisos_';
+        $transient_pattern = '_transient%ygb_avisos%';
 
         $wpdb->query(
             $wpdb->prepare(
-                "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
-                $transient_prefix_1 . '%',
-                $transient_prefix_2 . '%'
+                "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s",
+                $transient_pattern
             )
         );
     }
